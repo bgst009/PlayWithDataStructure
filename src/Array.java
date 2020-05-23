@@ -6,16 +6,17 @@ import java.util.Arrays;
  * @ClassName Array.java
  * @createTime 2020年05月23日 17:02:00
  */
-public class Array {
+public class Array<E> {
 
-    private int[] data;
+    private E[] data;
     private int size;
 
     /**
      * @param capacity 容量
      */
     public Array(int capacity) {
-        data = new int[capacity];
+        data = (E[]) new Object[capacity];
+        size = 0;
     }
 
     /**
@@ -25,7 +26,7 @@ public class Array {
         this(10);
     }
 
-    public int[] getData() {
+    public E[] getData() {
         return data;
     }
 
@@ -47,7 +48,7 @@ public class Array {
      * @param e element
      * @throws IllegalAccessException 索引异常
      */
-    public void addLast(int e) throws IllegalAccessException {
+    public void addLast(E e) throws IllegalAccessException {
         add(size, e);
     }
 
@@ -56,7 +57,7 @@ public class Array {
      *
      * @param e element
      */
-    public void addFirst(int e) throws IllegalAccessException {
+    public void addFirst(E e) throws IllegalAccessException {
         add(0, e);
     }
 
@@ -67,7 +68,7 @@ public class Array {
      * @param e     element
      * @throws IllegalAccessException 索引异常
      */
-    public void add(int index, int e) throws IllegalAccessException {
+    public void add(int index, E e) throws IllegalAccessException {
         if (size == data.length) {
             throw new IllegalAccessException("AddLast failed. Array is full");
         }
@@ -86,7 +87,7 @@ public class Array {
      * @return data[index]
      * @throws IllegalAccessException 索引异常
      */
-    int get(int index) throws IllegalAccessException {
+    E get(int index) throws IllegalAccessException {
         if (index < 0 || index >= size) {
             throw new IllegalAccessException("Get failed, Index is illegal.");
         }
@@ -99,7 +100,7 @@ public class Array {
      * @param index 索引
      * @throws IllegalAccessException 索引异常
      */
-    void set(int index, int e) throws IllegalAccessException {
+    void set(int index, E e) throws IllegalAccessException {
         if (index < 0 || index >= size) {
             throw new IllegalAccessException("Get failed, Index is illegal.");
         }
@@ -112,9 +113,9 @@ public class Array {
      * @param e element
      * @return boolean
      */
-    public boolean contains(int e) {
+    public boolean contains(E e) {
         for (int i = 0; i < size; i++) {
-            if (data[i] == e) {
+            if (data[i].equals(e)) {
                 return true;
             }
         }
@@ -127,9 +128,9 @@ public class Array {
      * @param e element
      * @return index of element
      */
-    public int find(int e) {
+    public int find(E e) {
         for (int i = 0; i < size; i++) {
-            if (data[i] == e) {
+            if (data[i].equals(e)) {
                 return i;
             }
         }
@@ -143,17 +144,20 @@ public class Array {
      * @return 被删除元素的值
      * @throws IllegalAccessException 索引异常
      */
-    public int remove(int index) throws IllegalAccessException {
+    public E remove(int index) throws IllegalAccessException {
 
         //index 合法性检测
         if (index < 0 || index >= size) {
             throw new IllegalAccessException("Remove failed. Index is illegal");
         }
 
-        int ret = data[index];
+        E ret = data[index];
 
         System.arraycopy(data, index + 1, data, index, size - index);
         size--;
+
+        //自动回收 //loitering objects
+        data[size] = null;
 
         return ret;
     }
@@ -164,7 +168,7 @@ public class Array {
      * @return 删除元素的值
      * @throws IllegalAccessException 索引异常
      */
-    public int removeFirst() throws IllegalAccessException {
+    public E removeFirst() throws IllegalAccessException {
         return remove(0);
     }
 
@@ -174,7 +178,7 @@ public class Array {
      * @return 删除元素的值
      * @throws IllegalAccessException 索引异常
      */
-    public int removeLast() throws IllegalAccessException {
+    public E removeLast() throws IllegalAccessException {
         return remove(size - 1);
     }
 
@@ -184,7 +188,7 @@ public class Array {
      * @param e 被删除的元素
      * @throws IllegalAccessException 索引异常
      */
-    public void removeElement(int e) throws IllegalAccessException {
+    public void removeElement(E e) throws IllegalAccessException {
         int index = find(e);
         if (index != -1) {
             remove(index);

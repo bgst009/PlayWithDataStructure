@@ -2,7 +2,8 @@ public class Main {
 
     public static void main(String[] args) throws IllegalAccessException {
 	// write your code here
-        Array array = new Array(20);
+        //泛型中不能使用基本数据类型
+        Array<Integer> array = new Array(20);
         for (int i = 0; i < 10; i++) {
             array.addLast(i);
         }
