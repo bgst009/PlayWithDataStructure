@@ -1,5 +1,3 @@
-import jdk.jfr.BooleanFlag;
-
 import java.util.Arrays;
 
 /**
@@ -106,6 +104,91 @@ public class Array {
             throw new IllegalAccessException("Get failed, Index is illegal.");
         }
         data[index] = e;
+    }
+
+    /**
+     * 查找数组中是否包含元素 e
+     *
+     * @param e element
+     * @return boolean
+     */
+    public boolean contains(int e) {
+        for (int i = 0; i < size; i++) {
+            if (data[i] == e) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 查找数组中包含元素的索引，并返回。如果不存在则返回 -1
+     *
+     * @param e element
+     * @return index of element
+     */
+    public int find(int e) {
+        for (int i = 0; i < size; i++) {
+            if (data[i] == e) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 从数组中删除 index 位置的元素并返回元素的值
+     *
+     * @param index 被删除元素的索引
+     * @return 被删除元素的值
+     * @throws IllegalAccessException 索引异常
+     */
+    public int remove(int index) throws IllegalAccessException {
+
+        //index 合法性检测
+        if (index < 0 || index >= size) {
+            throw new IllegalAccessException("Remove failed. Index is illegal");
+        }
+
+        int ret = data[index];
+
+        System.arraycopy(data, index + 1, data, index, size - index);
+        size--;
+
+        return ret;
+    }
+
+    /**
+     * 删除数组中的第一个元素，并返回删除元素的值
+     *
+     * @return 删除元素的值
+     * @throws IllegalAccessException 索引异常
+     */
+    public int removeFirst() throws IllegalAccessException {
+        return remove(0);
+    }
+
+    /**
+     * 删除数组中最后一个元素的值，并返回删除元素的值
+     *
+     * @return 删除元素的值
+     * @throws IllegalAccessException 索引异常
+     */
+    public int removeLast() throws IllegalAccessException {
+        return remove(size - 1);
+    }
+
+    /**
+     * 删除数组中的元素 e
+     *
+     * @param e 被删除的元素
+     * @throws IllegalAccessException 索引异常
+     */
+    public void removeElement(int e) throws IllegalAccessException {
+        int index = find(e);
+        if (index != -1) {
+            remove(index);
+        }
     }
 
     @Override
