@@ -70,7 +70,8 @@ public class Array<E> {
      */
     public void add(int index, E e) throws IllegalAccessException {
         if (size == data.length) {
-            throw new IllegalAccessException("AddLast failed. Array is full");
+//            throw new IllegalAccessException("AddLast failed. Array is full");
+            resize(2 * data.length);
         }
         if (index < 0 || index > size) {
             throw new IllegalAccessException("AddLast failed. Array require index < 0 || index > size");
@@ -153,11 +154,18 @@ public class Array<E> {
 
         E ret = data[index];
 
-        System.arraycopy(data, index + 1, data, index, size - index);
+        for (int i = index + 1; i < size; i++) {
+            data[i - 1] = data[i];
+        }
+
         size--;
 
         //自动回收 //loitering objects
         data[size] = null;
+
+        if (size == data.length / 2) {
+            resize(data.length / 2);
+        }
 
         return ret;
     }
@@ -202,5 +210,11 @@ public class Array<E> {
                 ", size=" + size +
                 ", capacity=" + data.length +
                 '}';
+    }
+
+    private void resize(int newCapacity) {
+        E[] newData = (E[]) new Object[newCapacity];
+        System.arraycopy(data, 0, newData, 0, size);
+        data = newData;
     }
 }
