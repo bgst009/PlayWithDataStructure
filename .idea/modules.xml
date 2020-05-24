@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Array/Array.iml" filepath="$PROJECT_DIR$/Array/Array.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01-Array/01-Array.iml" filepath="$PROJECT_DIR$/01-Array/01-Array.iml" />
+      <module fileurl="file://$PROJECT_DIR$/02-Stack/02-Stack.iml" filepath="$PROJECT_DIR$/02-Stack/02-Stack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/03-ArrayQueue/03-ArrayQueue.iml" filepath="$PROJECT_DIR$/03-ArrayQueue/03-ArrayQueue.iml" />
       <module fileurl="file://$PROJECT_DIR$/PlayWithDataStructure.iml" filepath="$PROJECT_DIR$/PlayWithDataStructure.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Stack/Stack.iml" filepath="$PROJECT_DIR$/Stack/Stack.iml" />
     </modules>
   </component>
 </project>
