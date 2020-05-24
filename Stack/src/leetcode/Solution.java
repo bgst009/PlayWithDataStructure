@@ -9,8 +9,8 @@ import java.util.Stack;
  * @createTime 2020年05月24日 10:43:00
  */
 public class Solution {
-    public boolean isValid(String s) {
-        Stack<Character> stack = new Stack<>();
+    public boolean isValid(String s) throws IllegalAccessException {
+        ArrayStack<Character> stack = new ArrayStack<>();
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if(c == '(' || c == '[' || c == '{') {
@@ -32,5 +32,9 @@ public class Solution {
             }
         }
         return stack.isEmpty();
+    }
+
+    public static void main(String[] args) throws IllegalAccessException {
+        System.out.println((new Solution().isValid("[]{}()")));
     }
 }
