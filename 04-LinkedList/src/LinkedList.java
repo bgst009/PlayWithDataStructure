@@ -28,9 +28,7 @@ public class LinkedList<E> {
 
         @Override
         public String toString() {
-            return "Node{" +
-                    "e=" + e.toString() +
-                    '}';
+            return e.toString();
         }
     }
 
@@ -181,12 +179,51 @@ public class LinkedList<E> {
     }
 
     /**
+     * 从链表中删除index(0-based)位置的元素, 返回删除的元素
+     *
+     * @param index 删除元素索引
+     * @return 删除的元素
+     */
+    public E remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Remove failed,Illegal index");
+        }
+
+        Node prev = dummyHead;
+        for (int i = 0; i < index; i++) {
+            prev = prev.next;
+        }
+
+        Node delNode = prev.next;
+        prev.next = delNode.next;
+        delNode.next = null;
+
+        size--;
+
+        return delNode.e;
+    }
+
+    /**
+     * @return 第一个元素（已被删除）
+     */
+    public E removeFirst() {
+        return remove(0);
+    }
+
+    /**
+     * @return 最后一个元素（已被删除）
+     */
+    public E removeLast() {
+        return remove(size - 1);
+    }
+
+    /**
      * @return 链表中的元素
      */
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
-        for(Node cur = dummyHead.next ; cur != null ; cur = cur.next) {
+        for (Node cur = dummyHead.next; cur != null; cur = cur.next) {
             res.append(cur + "->");
         }
         res.append("NULL");
