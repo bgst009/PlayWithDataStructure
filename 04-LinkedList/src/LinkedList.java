@@ -37,14 +37,14 @@ public class LinkedList<E> {
     /**
      * 链表头
      */
-    private Node head;
+    private Node dummyHead;
     /**
      * 链表中有多少个元素
      */
     private int size;
 
     public LinkedList() {
-        head = null;
+        dummyHead = new Node(null, null);
         size = 0;
     }
 
@@ -67,20 +67,6 @@ public class LinkedList<E> {
     }
 
     /**
-     * 在链表头添加新的元素
-     *
-     * @param e 要添加的元素
-     */
-    public void addFirst(E e) {
-//        Node node = new Node(e);
-//        node.next=head;
-//        head=node;
-
-        head = new Node(e, this.head);
-        size++;
-    }
-
-    /**
      * 在链表的index(0-based)位置添加新的元素e
      *
      * @param index 位置
@@ -90,23 +76,37 @@ public class LinkedList<E> {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("Add failed,Illegal index");
         }
-        if (index == 0) {
-            addFirst(e);
-        } else {
-            Node prev = head;
-            for (int i = 0; i < index - 1; i++) {
-                prev = prev.next;
-            }
+
+        Node prev = dummyHead;
+        for (int i = 0; i < index; i++) {
+            prev = prev.next;
+        }
 //            Node node = new Node(e);
 //            node.next = prev.next;
 //            prev.next = node;
 
-            prev.next = new Node(e, prev.next);
-
-            size++;
-        }
+        prev.next = new Node(e, prev.next);
+        size++;
     }
 
+    /**
+     * 在链表头添加新的元素
+     *
+     * @param e 要添加的元素
+     */
+    public void addFirst(E e) {
+//        Node node = new Node(e);
+//        node.next=head;
+//        head=node;
+
+        add(0, e);
+    }
+
+    /**
+     * 在链表末尾添加新的元素e
+     *
+     * @param e 元素
+     */
     public void addLast(E e) {
         add(size, e);
     }
