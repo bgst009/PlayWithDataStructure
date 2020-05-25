@@ -24,19 +24,19 @@ public interface Stack<E> {
      *
      * @param e 入栈元素
      */
-    void push(E e) throws IllegalAccessException;
+    void push(E e);
 
     /**
      * 弹栈
      *
      * @return 栈顶元素
      */
-    E pop() throws IllegalAccessException;
+    E pop();
 
     /**
      * 获取栈顶元素
      *
      * @return 栈顶元素
      */
-    E peek() throws IllegalAccessException;
+    E peek();
 }

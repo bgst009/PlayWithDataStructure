@@ -46,9 +46,8 @@ public class Array<E> {
      * 向数组中添加元素
      *
      * @param e element
-     * @throws IllegalAccessException 索引异常
      */
-    public void addLast(E e) throws IllegalAccessException {
+    public void addLast(E e) {
         add(size, e);
     }
 
@@ -57,7 +56,7 @@ public class Array<E> {
      *
      * @param e element
      */
-    public void addFirst(E e) throws IllegalAccessException {
+    public void addFirst(E e) {
         add(0, e);
     }
 
@@ -66,15 +65,13 @@ public class Array<E> {
      *
      * @param index 索引
      * @param e     element
-     * @throws IllegalAccessException 索引异常
      */
-    public void add(int index, E e) throws IllegalAccessException {
+    public void add(int index, E e) {
         if (size == data.length) {
-//            throw new IllegalAccessException("AddLast failed. Array is full");
             resize(2 * data.length);
         }
         if (index < 0 || index > size) {
-            throw new IllegalAccessException("AddLast failed. Array require index < 0 || index > size");
+            throw new IllegalArgumentException("AddLast failed. Array require index < 0 || index > size");
         }
         System.arraycopy(data, index, data, index + 1, size - index);
         data[index] = e;
@@ -86,11 +83,10 @@ public class Array<E> {
      *
      * @param index 索引
      * @return data[index]
-     * @throws IllegalAccessException 索引异常
      */
-    E get(int index) throws IllegalAccessException {
+    E get(int index) {
         if (index < 0 || index >= size) {
-            throw new IllegalAccessException("Get failed, Index is illegal.");
+            throw new IllegalArgumentException("Get failed, Index is illegal.");
         }
         return data[index];
     }
@@ -99,11 +95,10 @@ public class Array<E> {
      * 设置 index 索引位置的元素
      *
      * @param index 索引
-     * @throws IllegalAccessException 索引异常
      */
-    void set(int index, E e) throws IllegalAccessException {
+    void set(int index, E e) {
         if (index < 0 || index >= size) {
-            throw new IllegalAccessException("Get failed, Index is illegal.");
+            throw new IllegalArgumentException("Get failed, Index is illegal.");
         }
         data[index] = e;
     }
@@ -143,13 +138,12 @@ public class Array<E> {
      *
      * @param index 被删除元素的索引
      * @return 被删除元素的值
-     * @throws IllegalAccessException 索引异常
      */
-    public E remove(int index) throws IllegalAccessException {
+    public E remove(int index) {
 
         //index 合法性检测
         if (index < 0 || index >= size) {
-            throw new IllegalAccessException("Remove failed. Index is illegal");
+            throw new IllegalArgumentException("Remove failed. Index is illegal");
         }
 
         E ret = data[index];
@@ -174,9 +168,8 @@ public class Array<E> {
      * 删除数组中的第一个元素，并返回删除元素的值
      *
      * @return 删除元素的值
-     * @throws IllegalAccessException 索引异常
      */
-    public E removeFirst() throws IllegalAccessException {
+    public E removeFirst() {
         return remove(0);
     }
 
@@ -184,9 +177,8 @@ public class Array<E> {
      * 删除数组中最后一个元素的值，并返回删除元素的值
      *
      * @return 删除元素的值
-     * @throws IllegalAccessException 索引异常
      */
-    public E removeLast() throws IllegalAccessException {
+    public E removeLast() {
         return remove(size - 1);
     }
 
@@ -194,9 +186,8 @@ public class Array<E> {
      * 删除数组中的元素 e
      *
      * @param e 被删除的元素
-     * @throws IllegalAccessException 索引异常
      */
-    public void removeElement(E e) throws IllegalAccessException {
+    public void removeElement(E e) {
         int index = find(e);
         if (index != -1) {
             remove(index);

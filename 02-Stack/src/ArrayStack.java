@@ -31,17 +31,17 @@ public class ArrayStack<E> implements Stack<E> {
     }
 
     @Override
-    public void push(E e) throws IllegalAccessException {
+    public void push(E e) {
         array.addLast(e);
     }
 
     @Override
-    public E pop() throws IllegalAccessException {
+    public E pop() {
         return array.removeLast();
     }
 
     @Override
-    public E peek() throws IllegalAccessException {
+    public E peek() {
         return array.getLast();
     }
 
@@ -51,12 +51,9 @@ public class ArrayStack<E> implements Stack<E> {
         res.append("stack: ");
         res.append('[');
         for (int i = 0; i < array.getSize(); i++) {
-            try {
-                res.append(array.get(i));
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-            if(i!=array.getSize()-1){
+            res.append(array.get(i));
+
+            if (i != array.getSize() - 1) {
                 res.append(", ");
             }
         }
