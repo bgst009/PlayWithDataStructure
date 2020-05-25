@@ -110,4 +110,86 @@ public class LinkedList<E> {
     public void addLast(E e) {
         add(size, e);
     }
+
+    /**
+     * 获得链表的第index(0-based)个位置的元素
+     *
+     * @param index index
+     * @return index 位置的元素
+     */
+    public E get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Get failed,Illegal index");
+        }
+        Node cur = dummyHead.next;
+        for (int i = 0; i < index; i++) {
+            cur = cur.next;
+        }
+        return cur.e;
+    }
+
+    /**
+     * 获得链表的第一个元素
+     *
+     * @return 第一个元素
+     */
+    public E getFirst() {
+        return get(0);
+    }
+
+    /**
+     * 获得链表的最后一个元素
+     *
+     * @return 最后一个元素
+     */
+    public E getLast() {
+        return get(size);
+    }
+
+    /**
+     * 修改链表的第index(0-based)个位置的元素为e
+     *
+     * @param index 所修改元素的内容的索引
+     * @param e     元素值
+     */
+    public void set(int index, E e) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Set failed,Illegal index");
+        }
+        Node cur = dummyHead.next;
+        for (int i = 0; i < index; i++) {
+            cur = cur.next;
+        }
+        cur.e = e;
+    }
+
+    /**
+     * 查找链表中是否有元素e
+     *
+     * @param e 元素
+     * @return true 存在
+     */
+    public boolean contains(E e) {
+        Node cur = dummyHead.next;
+        while (cur != null) {
+            if (cur.e.equals(e)) {
+                return true;
+            }
+            cur = cur.next;
+        }
+        return false;
+    }
+
+    /**
+     * @return 链表中的元素
+     */
+    @Override
+    public String toString() {
+        StringBuilder res = new StringBuilder();
+        for(Node cur = dummyHead.next ; cur != null ; cur = cur.next) {
+            res.append(cur + "->");
+        }
+        res.append("NULL");
+        return res.toString();
+    }
 }
