@@ -37,7 +37,7 @@ public class LoopQueue<E> implements Queue<E> {
     }
 
     @Override
-    public void enqueue(E e) throws IllegalAccessException {
+    public void enqueue(E e) {
         if ((tail + 1) % data.length == front) {
             resize(getCapacity() * 2);
         }
@@ -47,7 +47,7 @@ public class LoopQueue<E> implements Queue<E> {
     }
 
     @Override
-    public E dequeue() throws IllegalAccessException {
+    public E dequeue() {
         if (isEmpty()) {
             throw new IllegalArgumentException("Cannot dequeue from an empty queue.");
         }
@@ -66,7 +66,7 @@ public class LoopQueue<E> implements Queue<E> {
     }
 
     @Override
-    public E getFront() throws IllegalAccessException {
+    public E getFront() {
         if (isEmpty()) {
             throw new IllegalArgumentException("Cannot dequeue from an empty queue.");
         }
@@ -100,7 +100,7 @@ public class LoopQueue<E> implements Queue<E> {
         return res.toString();
     }
 
-    public static void main(String[] args) throws IllegalAccessException {
+    public static void main(String[] args) {
 
         LoopQueue<Integer> queue = new LoopQueue<>();
         for (int i = 0; i < 10; i++) {

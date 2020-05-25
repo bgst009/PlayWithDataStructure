@@ -10,11 +10,11 @@ public class Main {
     /**
      * 测试使用q运行opCount个enqueueu和dequeue操作所需要的时间，单位：秒
      *
-     * @param q queue
+     * @param q       queue
      * @param opCount operation count
      * @return total time
      */
-    private static double testQueue(Queue<Integer> q, int opCount) throws IllegalAccessException {
+    private static double testQueue(Queue<Integer> q, int opCount) {
 
         long startTime = System.nanoTime();
 
@@ -31,7 +31,7 @@ public class Main {
         return (endTime - startTime) / 1000000000.0;
     }
 
-    public static void main(String[] args) throws IllegalAccessException {
+    public static void main(String[] args) {
 
         int opCount = 100000;
 
@@ -42,5 +42,9 @@ public class Main {
         LoopQueue<Integer> loopQueue = new LoopQueue<>();
         double time2 = testQueue(loopQueue, opCount);
         System.out.println("LoopQueue, time: " + time2 + " s");
+
+        LinkedListQueue<Integer> linkedListQueue = new LinkedListQueue<>();
+        double time3 = testQueue(linkedListQueue, opCount);
+        System.out.println("LoopQueue, time: " + time3 + " s");
     }
 }

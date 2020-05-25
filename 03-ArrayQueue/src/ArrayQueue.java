@@ -49,10 +49,9 @@ public class ArrayQueue<E> implements Queue<E> {
      * 入队
      *
      * @param e 进入队列的元素
-     * @throws IllegalAccessException 异常
      */
     @Override
-    public void enqueue(E e) throws IllegalAccessException {
+    public void enqueue(E e) {
         array.addLast(e);
     }
 
@@ -60,10 +59,9 @@ public class ArrayQueue<E> implements Queue<E> {
      * 出队
      *
      * @return 所删除元素
-     * @throws IllegalAccessException 异常
      */
     @Override
-    public E dequeue() throws IllegalAccessException {
+    public E dequeue() {
         return array.removeFirst();
     }
 
@@ -71,10 +69,9 @@ public class ArrayQueue<E> implements Queue<E> {
      * 获取队首元素
      *
      * @return 队首元素<E>
-     * @throws IllegalAccessException 异常
      */
     @Override
-    public E getFront() throws IllegalAccessException {
+    public E getFront() {
         return array.getFirst();
     }
 
@@ -89,11 +86,9 @@ public class ArrayQueue<E> implements Queue<E> {
         res.append("Queue: ");
         res.append("front [");
         for (int i = 0; i < array.getSize(); i++) {
-            try {
-                res.append(array.get(i));
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
+
+            res.append(array.get(i));
+
             if (i != array.getSize() - 1) {
                 res.append(", ");
             }
@@ -102,7 +97,7 @@ public class ArrayQueue<E> implements Queue<E> {
         return res.toString();
     }
 
-    public static void main(String[] args) throws IllegalAccessException {
+    public static void main(String[] args) {
         ArrayQueue<Integer> integerArrayQueue = new ArrayQueue<>();
         for (int i = 0; i < 10; i++) {
             integerArrayQueue.enqueue(i);
