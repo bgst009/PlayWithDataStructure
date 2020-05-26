@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/03-ArrayQueue/03-ArrayQueue.iml" filepath="$PROJECT_DIR$/03-ArrayQueue/03-ArrayQueue.iml" />
       <module fileurl="file://$PROJECT_DIR$/04-LinkedList/04-LinkedList.iml" filepath="$PROJECT_DIR$/04-LinkedList/04-LinkedList.iml" />
       <module fileurl="file://$PROJECT_DIR$/05-Recursion/05-Recursion.iml" filepath="$PROJECT_DIR$/05-Recursion/05-Recursion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/06-BST/06-BST.iml" filepath="$PROJECT_DIR$/06-BST/06-BST.iml" />
       <module fileurl="file://$PROJECT_DIR$/PlayWithDataStructure.iml" filepath="$PROJECT_DIR$/PlayWithDataStructure.iml" />
     </modules>
   </component>
