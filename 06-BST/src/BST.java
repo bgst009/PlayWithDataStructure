@@ -1,3 +1,6 @@
+import javax.sound.midi.Soundbank;
+import java.util.Stack;
+
 /**
  * @author yin_zhong_en
  * @version 1.0.0
@@ -126,6 +129,26 @@ public class BST<E extends Comparable<E>> {
         System.out.println(node.e);
         preOrder(node.left);
         preOrder(node.right);
+    }
+
+    public void preOrderNR() {
+        if (root == null) {
+            return;
+        }
+
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            Node cur = stack.pop();
+            System.out.println(cur.e);
+
+            if (cur.right != null) {
+                stack.push(cur.right);
+            }
+            if (cur.left != null) {
+                stack.push(cur.left);
+            }
+        }
     }
 
     /**
