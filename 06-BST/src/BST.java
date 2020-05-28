@@ -1,5 +1,3 @@
-import org.w3c.dom.Node;
-
 /**
  * @author yin_zhong_en
  * @version 1.0.0
@@ -70,5 +68,36 @@ public class BST<E extends Comparable<E>> {
         }
 
         return node;
+    }
+
+    /**
+     * 看二分搜索树中是否包含元素e
+     *
+     * @param e 被查找的元素
+     * @return Boolean true 存在 false 不存在
+     */
+    public boolean contains(E e) {
+        return contains(root, e);
+    }
+
+    /**
+     * 看以node为根的二分搜索树中是否包含元素e, 递归算法
+     *
+     * @param node 根
+     * @param e    被查找的元素
+     * @return Boolean true 存在 false 不存在
+     */
+    private boolean contains(Node node, E e) {
+        if (node == null) {
+            return false;
+        }
+
+        if (e.compareTo(node.e) == 0) {
+            return true;
+        } else if (e.compareTo(node.e) < 0) {
+            return contains(node.left, e);
+        } else {
+            return contains(node.right, e);
+        }
     }
 }
