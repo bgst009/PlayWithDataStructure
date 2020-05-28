@@ -50,7 +50,7 @@ public class BST<E extends Comparable<E>> {
      */
     private Node add(Node node, E e) {
 
-        /**
+        /*
          * 递归到底的情况
          */
         if (node == null) {
@@ -58,7 +58,7 @@ public class BST<E extends Comparable<E>> {
             return new Node(e);
         }
 
-        /**
+        /*
          * 宏观处理流程
          */
         if (e.compareTo(node.e) < 0) {
@@ -99,5 +99,64 @@ public class BST<E extends Comparable<E>> {
         } else {
             return contains(node.right, e);
         }
+    }
+
+    /**
+     * 二分搜索树的前序遍历
+     */
+    public void preOrder() {
+        preOrder(root);
+    }
+
+    /**
+     * 前序遍历以node为根的二分搜索树, 递归算法
+     *
+     * @param node 根节点
+     */
+    private void preOrder(Node node) {
+        /*
+         * 递归终止
+         */
+        if (node == null) {
+            return;
+        }
+        /*
+          递归逻辑
+         */
+        System.out.println(node.e);
+        preOrder(node.left);
+        preOrder(node.right);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder res = new StringBuilder();
+        generateBSTString(root, 0, res);
+        return res.toString();
+    }
+
+    /**
+     * 生成以node为根节点，深度为depth的描述二叉树的字符串
+     *
+     * @param node  根节点
+     * @param depth 深度
+     * @param res   树字符串
+     */
+    private void generateBSTString(Node node, int depth, StringBuilder res) {
+
+        if (node == null) {
+            res.append(generateDepthString(depth)).append("null\n");
+            return;
+        }
+
+        res.append(generateDepthString(depth)).append(node.e).append("\n");
+        generateBSTString(node.left, depth + 1, res);
+        generateBSTString(node.right, depth + 1, res);
+    }
+
+    private String generateDepthString(int depth) {
+        StringBuilder res = new StringBuilder();
+        res.append("--".repeat(Math.max(0, depth)));
+        return res.toString();
     }
 }
