@@ -1,4 +1,3 @@
-import javax.sound.midi.Soundbank;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -218,6 +217,124 @@ public class BST<E extends Comparable<E>> {
             }
         }
     }
+
+    /**
+     * 寻找二分搜索树的最小元素
+     *
+     * @return value of Node
+     */
+    public E minimum() {
+        if (size == 0) {
+            throw new IllegalArgumentException("BST is empty");
+        }
+
+        Node minNode = minimum(root);
+        return minNode.e;
+    }
+
+    /**
+     * 返回以node为根的二分搜索树的最小值所在的节点
+     *
+     * @param node 根节点
+     * @return 最小值节点
+     */
+    private Node minimum(Node node) {
+        if (node.left == null) {
+            return node;
+        }
+
+        return minimum(node.left);
+    }
+
+    /**
+     * 寻找二分搜索树的最大元素
+     *
+     * @return value of Node
+     */
+    public E maximum() {
+        if (size == 0) {
+            throw new IllegalArgumentException("BST is empty");
+        }
+
+        return maximum(root).e;
+    }
+
+    /**
+     * 返回以node为根的二分搜索树的最大值所在的节点
+     *
+     * @param node 根节点
+     * @return 最大值节点
+     */
+    private Node maximum(Node node) {
+        if (node.right == null) {
+            return node;
+        }
+
+        return maximum(node.right);
+    }
+
+    /**
+     * 从二分搜索树中删除最小值所在节点, 返回最小值
+     *
+     * @return 最小值
+     */
+    public E removeMin() {
+        E ret = minimum();
+        root = removeMin(root);
+        return ret;
+    }
+
+    /**
+     * 删除掉以node为根的二分搜索树中的最小节点
+     * 返回删除节点后新的二分搜索树的根
+     *
+     * @param node 根节点
+     * @return 删除最小值后的根节点
+     */
+    private Node removeMin(Node node) {
+        if (node.left == null) {
+            Node rightNode = node.right;
+            node.right = null;
+            size--;
+            return rightNode;
+        }
+
+        node.left = removeMin(node.left);
+
+        return node;
+
+    }
+
+    /**
+     * 从二分搜索树中删除最大值所在节点
+     *
+     * @return 最大值
+     */
+    public E removeMax() {
+        E ret = maximum();
+        root = removeMax(this.root);
+        return ret;
+    }
+
+    /**
+     * 删除掉以node为根的二分搜索树中的最大节点
+     * 返回删除节点后新的二分搜索树的根
+     *
+     * @param node 根节点
+     * @return 删除最大节点后后的根节点
+     */
+    private Node removeMax(Node node) {
+        if (node.right == null) {
+            Node leftNode = node.left;
+            node.left = null;
+            size--;
+            return leftNode;
+        }
+
+        node.right = removeMax(node.right);
+        return node;
+    }
+
 
     @Override
     public String toString() {
