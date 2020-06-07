@@ -75,5 +75,13 @@ public class Main {
 
         }
         System.out.println("removeMax test complete");
+
+        for (int i = 0; i < n; i++) {
+            bst.add(random.nextInt(50));
+        }
+        System.out.println(bst);
+        bst.remove(12);
+        System.out.println(bst);
+
     }
 }
