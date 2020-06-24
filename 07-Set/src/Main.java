@@ -1,37 +1,51 @@
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main {
 
-  public static void main(String[] args) {
+    private static double testSet(Set<String> set, String filename) {
 
-    System.out.println("Pride and Prejudice");
+        long startTime = System.nanoTime();
 
-    ArrayList<String> words1 = new ArrayList<>();
-    if (FileOperation.readFile("pride-and-prejudice.txt", words1)) {
-      System.out.println("Total words: " + words1.size());
+        System.out.println(filename);
+        ArrayList<String> words = new ArrayList<>();
+        if (FileOperation.readFile(filename, words)) {
+            System.out.println("Total words: " + words.size());
 
-//      BSTSet<String> set1 = new BSTSet<>();
-      LinkedListSet<String> stringLinkedListSet1 = new LinkedListSet<>();
-      for (String word : words1) {
-        stringLinkedListSet1.add(word);
-      }
-      System.out.println("Total different words: " + stringLinkedListSet1.getSize());
+            for (String word : words) {
+                set.add(word);
+            }
+            System.out.println("Total different words: " + set.getSize());
+        }
+        long endTime = System.nanoTime();
+
+        double seconds = (endTime - startTime) / 1000000000.0;
+        return seconds;
     }
 
-    System.out.println();
+    public static void main(String[] args) {
 
-    System.out.println("A Tale of Two Cities");
+        String filename = "pride-and-prejudice.txt";
 
-    ArrayList<String> words2 = new ArrayList<>();
-    if (FileOperation.readFile("a-tale-of-two-cities.txt", words2)) {
-      System.out.println("Total words: " + words2.size());
+        BSTSet<String> bstSet = new BSTSet<>();
+        double time1 = testSet(bstSet, filename);
+        System.out.println("BST Set: " + time1 + " s");
 
-      BSTSet<String> set2 = new BSTSet<>();
-      for (String word : words2) {
-        set2.add(word);
-      }
-      System.out.println("Total different words: " + set2.getSize());
+        System.out.println();
+
+        LinkedListSet<String> linkedListSet = new LinkedListSet<>();
+        double time2 = testSet(linkedListSet, filename);
+        System.out.println("Linked List Set: " + time2 + " s");
+
+    /*
+        pride-and-prejudice.txt
+        Total words: 125901
+        Total different words: 6530
+        BST Set: 0.4179655 s
+
+        pride-and-prejudice.txt
+        Total words: 125901
+        Total different words: 6530
+        Linked List Set: 15.6691239 s
+    */
     }
-  }
 }
