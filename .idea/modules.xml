@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/06-BST/06-BST.iml" filepath="$PROJECT_DIR$/06-BST/06-BST.iml" />
       <module fileurl="file://$PROJECT_DIR$/07-Map/07-Map.iml" filepath="$PROJECT_DIR$/07-Map/07-Map.iml" />
       <module fileurl="file://$PROJECT_DIR$/07-Set/07-Set.iml" filepath="$PROJECT_DIR$/07-Set/07-Set.iml" />
+      <module fileurl="file://$PROJECT_DIR$/08_Heap/08_Heap.iml" filepath="$PROJECT_DIR$/08_Heap/08_Heap.iml" />
       <module fileurl="file://$PROJECT_DIR$/PlayWithDataStructure.iml" filepath="$PROJECT_DIR$/PlayWithDataStructure.iml" />
     </modules>
   </component>
