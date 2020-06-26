@@ -21,6 +21,12 @@ public class Array<E> {
     this(10);
   }
 
+  public Array(E[] arr) {
+    data = (E[]) new Object[arr.length];
+    System.arraycopy(arr, 0, data, 0, arr.length);
+    size = arr.length;
+  }
+
   public E[] getData() {
     return data;
   }
@@ -143,8 +149,8 @@ public class Array<E> {
 
     E ret = data[index];
 
-    for (int i = index + 1; i < size; i++) {
-      data[i - 1] = data[i];
+    if (size - index + 1 >= 0) {
+      System.arraycopy(data, index + 1, data, index + 1 - 1, size - index + 1);
     }
 
     size--;
