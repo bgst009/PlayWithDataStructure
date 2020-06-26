@@ -3,6 +3,22 @@
   <component name="LeetcodeEditor">
     <option name="projectConfig">
       <map>
+        <entry key="$PROJECT_DIR$/../../Leetcode-cn/leetcode/editor/cn/[349]两个数组的交集.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/../../Leetcode-cn/leetcode/editor/cn/[349]两个数组的交集.java" />
+              <option name="questionId" value="349" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Leetcode-cn/leetcode/editor/cn/[350]两个数组的交集 II.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/../../Leetcode-cn/leetcode/editor/cn/[350]两个数组的交集 II.java" />
+              <option name="questionId" value="350" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../Leetcode-cn/leetcode/editor/cn/[804]唯一摩尔斯密码词.java">
           <value>
             <LeetcodeEditor>

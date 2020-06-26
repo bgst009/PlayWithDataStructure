@@ -11,8 +11,9 @@ public class Main {
       System.out.println("Total words: " + words.size());
 
       for (String word : words) {
-        if (map.contains(word)) map.set(word, map.get(word) + 1);
-        else {
+        if (map.contains(word)) {
+          map.set(word, map.get(word) + 1);
+        } else {
           map.add(word, 1);
         }
       }
