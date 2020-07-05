@@ -39,6 +39,24 @@ public class Trie {
     }
   }
 
+  /**
+   * 查询单词word是否在Trie中
+   *
+   * @param word 单词word
+   * @return boolean
+   */
+  public boolean contains(String word) {
+    Node curr = root;
+    for (int i = 0; i < word.length(); i++) {
+      char c = word.charAt(i);
+      if (curr.next.get(c) == null) {
+        return false;
+      }
+      curr = curr.next.get(c);
+    }
+    return curr.isWord;
+  }
+
   private class Node {
     boolean isWord;
     TreeMap<Character, Node> next;
