@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/07-Set/07-Set.iml" filepath="$PROJECT_DIR$/07-Set/07-Set.iml" />
       <module fileurl="file://$PROJECT_DIR$/08_Heap/08_Heap.iml" filepath="$PROJECT_DIR$/08_Heap/08_Heap.iml" />
       <module fileurl="file://$PROJECT_DIR$/09-Segment-Tree/09-Segment-Tree.iml" filepath="$PROJECT_DIR$/09-Segment-Tree/09-Segment-Tree.iml" />
+      <module fileurl="file://$PROJECT_DIR$/10-Trie/10-Trie.iml" filepath="$PROJECT_DIR$/10-Trie/10-Trie.iml" />
       <module fileurl="file://$PROJECT_DIR$/PlayWithDataStructure.iml" filepath="$PROJECT_DIR$/PlayWithDataStructure.iml" />
     </modules>
   </component>
