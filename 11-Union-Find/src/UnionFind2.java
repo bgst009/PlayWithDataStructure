@@ -16,6 +16,12 @@ public class UnionFind2 implements UF {
    * @return 集合编号
    */
   private int find(int p) {
+    if (p < 0 || p >= parent.length) {
+      throw new IllegalArgumentException("p is out of bound.");
+    }
+
+    // 不断去查询自己的父亲节点, 直到到达根节点
+    // 根节点的特点: parent[p] == p
     while (p != parent[p]) {
       p = parent[p];
     }
@@ -24,7 +30,7 @@ public class UnionFind2 implements UF {
 
   @Override
   public int getSize() {
-    return 0;
+    return parent.length;
   }
 
   /**
@@ -54,6 +60,6 @@ public class UnionFind2 implements UF {
       return;
     }
 
-    parent[p] = qRoot;
+    parent[pRoot] = qRoot;
   }
 }
