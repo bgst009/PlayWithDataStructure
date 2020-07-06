@@ -14,6 +14,7 @@
       <module fileurl="file://$PROJECT_DIR$/09-Segment-Tree/09-Segment-Tree.iml" filepath="$PROJECT_DIR$/09-Segment-Tree/09-Segment-Tree.iml" />
       <module fileurl="file://$PROJECT_DIR$/10-Trie/10-Trie.iml" filepath="$PROJECT_DIR$/10-Trie/10-Trie.iml" />
       <module fileurl="file://$PROJECT_DIR$/11-Union-Find/11-Union-Find.iml" filepath="$PROJECT_DIR$/11-Union-Find/11-Union-Find.iml" />
+      <module fileurl="file://$PROJECT_DIR$/12-AVL-Tree/12-AVL-Tree.iml" filepath="$PROJECT_DIR$/12-AVL-Tree/12-AVL-Tree.iml" />
       <module fileurl="file://$PROJECT_DIR$/PlayWithDataStructure.iml" filepath="$PROJECT_DIR$/PlayWithDataStructure.iml" />
     </modules>
   </component>
