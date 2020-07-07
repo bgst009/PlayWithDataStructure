@@ -96,6 +96,18 @@ public class RBTree<K extends Comparable<K>, V> {
       node.value = value;
     }
 
+    if (isRed(node.right) && !isRed(node.left)) {
+      node = leftRotate(node);
+    }
+
+    if (isRed(node.left) && isRed(node.left.left)) {
+      node = rightRotate(node);
+    }
+
+    if (isRed(node.left) && isRed(node.right)) {
+      flipColors(node);
+    }
+
     return node;
   }
 
@@ -280,7 +292,7 @@ public class RBTree<K extends Comparable<K>, V> {
     return x;
   }
 
-  private void filpColors(Node node) {
+  private void flipColors(Node node) {
     node.color = RED;
     node.left.color = BLACK;
     node.right.color = BLACK;
