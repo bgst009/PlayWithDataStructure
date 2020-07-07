@@ -37,6 +37,19 @@ public class RBTree<K extends Comparable<K>, V> {
     System.out.println();
   }
 
+  /**
+   * 判断节点node的颜色
+   *
+   * @param node 节点node
+   * @return node的颜色
+   */
+  private boolean isRed(Node node) {
+    if (node == null) {
+      return BLACK;
+    }
+    return node.color;
+  }
+
   public int getSize() {
     return size;
   }
@@ -46,22 +59,25 @@ public class RBTree<K extends Comparable<K>, V> {
   }
 
   /**
-   * 向二分搜索树中添加新的元素(key, value)
+   * 向红黑树树中添加新的元素(key, value)
    *
    * @param key 键Key
    * @param value 键值
    */
   public void add(K key, V value) {
     root = add(root, key, value);
+
+    // 最终根节点为黑色节点
+    root.color = BLACK;
   }
 
   /**
-   * 向以node为根的二分搜索树中插入元素(key, value)，递归算法
+   * 向以node为根的红黑树中插入元素(key, value)，递归算法
    *
    * @param node node为根
    * @param key 键Key
    * @param value 键值
-   * @return 返回插入新节点后二分搜索树的根
+   * @return 返回插入新节点后红黑树的根
    */
   private Node add(Node node, K key, V value) {
 
@@ -214,6 +230,24 @@ public class RBTree<K extends Comparable<K>, V> {
 
       return successor;
     }
+  }
+
+  //   node                     x
+  //  /   \     左旋转         /  \
+  // T1   x   --------->   node   T3
+  //     / \              /   \
+  //    T2 T3            T1   T2
+  private Node leftRotate(Node node) {
+    Node x = node.right;
+
+    // 左旋转
+    node.right = x.left;
+    x.left = node;
+
+    x.color = node.color;
+    node.color = RED;
+
+    return x;
   }
 
   private class Node {
