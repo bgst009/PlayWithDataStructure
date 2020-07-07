@@ -83,6 +83,7 @@ public class RBTree<K extends Comparable<K>, V> {
 
     if (node == null) {
       size++;
+      // 默认插入红色节点
       return new Node(key, value);
     }
 
@@ -237,6 +238,11 @@ public class RBTree<K extends Comparable<K>, V> {
   // T1   x   --------->   node   T3
   //     / \              /   \
   //    T2 T3            T1   T2
+
+  /**
+   * @param node 根节点
+   * @return 旋转后的根节点
+   */
   private Node leftRotate(Node node) {
     Node x = node.right;
 
@@ -248,6 +254,36 @@ public class RBTree<K extends Comparable<K>, V> {
     node.color = RED;
 
     return x;
+  }
+
+  //     node                   x
+  //    /   \     右旋转       /  \
+  //   x    T2   ------->   y   node
+  //  / \                       /  \
+  // y  T1                     T1  T2
+
+  /**
+   * @param node 根节点
+   * @return 旋转后的根节点
+   */
+  private Node rightRotate(Node node) {
+
+    Node x = node.left;
+
+    // 右旋转
+    node.left = x.right;
+    x.right = node;
+
+    x.color = node.color;
+    node.color = RED;
+
+    return x;
+  }
+
+  private void filpColors(Node node) {
+    node.color = RED;
+    node.left.color = BLACK;
+    node.right.color = BLACK;
   }
 
   private class Node {
