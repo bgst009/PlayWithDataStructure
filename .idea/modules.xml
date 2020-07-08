@@ -16,6 +16,7 @@
       <module fileurl="file://$PROJECT_DIR$/11-Union-Find/11-Union-Find.iml" filepath="$PROJECT_DIR$/11-Union-Find/11-Union-Find.iml" />
       <module fileurl="file://$PROJECT_DIR$/12-AVL-Tree/12-AVL-Tree.iml" filepath="$PROJECT_DIR$/12-AVL-Tree/12-AVL-Tree.iml" />
       <module fileurl="file://$PROJECT_DIR$/13-Red-Black-Tree/13-Red-Black-Tree.iml" filepath="$PROJECT_DIR$/13-Red-Black-Tree/13-Red-Black-Tree.iml" />
+      <module fileurl="file://$PROJECT_DIR$/14-Hash-Table/14-Hash-Table.iml" filepath="$PROJECT_DIR$/14-Hash-Table/14-Hash-Table.iml" />
       <module fileurl="file://$PROJECT_DIR$/PlayWithDataStructure.iml" filepath="$PROJECT_DIR$/PlayWithDataStructure.iml" />
     </modules>
   </component>
